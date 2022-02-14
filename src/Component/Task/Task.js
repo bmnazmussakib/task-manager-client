@@ -1,70 +1,37 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import TaskDetails from '../TaskDetails/TaskDetails';
+import { AiFillDelete, AiOutlineEdit } from 'react-icons/ai';
 
-const task = () => {
+const task = ({ task }) => {
 
-    const taskData = [
-        {
-            id: 1,
-            title: 'App front end design',
-            date: '13/2/2022',
-            duration: '30',
-            type: 'App Development',
-            priority: 'High'
-        },
-        {
-            id: 2,
-            title: 'App back end design',
-            date: '14/2/2022',
-            duration: '30',
-            type: 'App Development',
-            priority: 'High'
-        },
-        {
-            id: 3,
-            title: 'App checking',
-            date: '14/2/2022',
-            duration: '30',
-            type: 'App Development',
-            priority: 'High'
-        },
-        {
-            id: 4,
-            title: 'App submit',
-            date: '15/2/2022',
-            duration: '30',
-            type: 'App Development',
-            priority: 'High'
+    // console.log(task);
+
+    const controlCheckTask = (id) => {
+
+        const myCheck = document.getElementById(id);
+
+        if (myCheck.checked == true) {
+            console.log(id);
         }
-    ];
+    }
 
 
 
     return (
-        <div>
-            <Container>
-                <table className="table table-borderless table-hover">
-                    <thead>
-                        <tr className="" >
-                            <th scope="col">Done</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Due</th>
-                            <th scope="col">Duration</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {
-                            taskData.map((task, index) => <TaskDetails task={task} key={index} />)
-                        }
-                    </tbody>
-                </table>
-
-            </Container>
-        </div>
+        // <tr>
+            <>
+                <th scope="row">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id={task.id} onClick={() => controlCheckTask(task.id)} />
+                    </div>
+                </th>
+                <td className="task-title" id="task-title">{task.title}</td>
+                <td>{task.date}</td>
+                <td>{task.duration}</td>
+                <td>{task.type}</td>
+                <td><button className="btn btn-warning"><AiOutlineEdit className="" /></button> <button className="btn btn-danger"><AiFillDelete className="" /></button> </td>
+            </>
+        // </tr>
     );
 };
 

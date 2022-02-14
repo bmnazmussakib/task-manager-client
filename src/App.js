@@ -1,10 +1,11 @@
 import './App.css';
-import Home from './Component/Home/Home';
+import AddTask from './Component/AddTask/AddTask';
 
 function App() {
   return (
     <div>
-      <Home />
+      <h1 className="text-center text-info">TASK MANAGER</h1>
+      <AddTask />
     </div>
   );
 }
