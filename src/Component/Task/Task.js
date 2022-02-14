@@ -10,28 +10,32 @@ const task = () => {
             title: 'App front end design',
             date: '13/2/2022',
             duration: '30',
-            type: 'App Development'
+            type: 'App Development',
+            priority: 'High'
         },
         {
             id: 2,
             title: 'App back end design',
             date: '14/2/2022',
             duration: '30',
-            type: 'App Development'
+            type: 'App Development',
+            priority: 'High'
         },
         {
             id: 3,
             title: 'App checking',
             date: '14/2/2022',
             duration: '30',
-            type: 'App Development'
+            type: 'App Development',
+            priority: 'High'
         },
         {
             id: 4,
             title: 'App submit',
             date: '15/2/2022',
             duration: '30',
-            type: 'App Development'
+            type: 'App Development',
+            priority: 'High'
         }
     ];
 

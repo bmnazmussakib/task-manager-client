@@ -1,3 +1,4 @@
+import { Button } from 'bootstrap';
 import React from 'react';
 import { AiOutlineEdit, AiFillDelete } from 'react-icons/ai';
 
@@ -28,7 +29,8 @@ const TaskDetails = ({ task }) => {
             <td>{task.date}</td>
             <td>{task.duration}</td>
             <td>{task.type}</td>
-            <td><a href="#"><AiOutlineEdit className="fs-3" /></a> <a href="#"><AiFillDelete className="fs-3" /></a> </td>
+            <td><button className="btn btn-warning"><AiOutlineEdit className="" /></button> <button className="btn btn-danger"><AiFillDelete className="" /></button> </td>
+            {/* <td><a href="#"><AiOutlineEdit className="fs-3" /></a> <a href="#"><AiFillDelete className="fs-3" /></a> </td> */}
         </tr>
     );
 };
