@@ -2,11 +2,11 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { AiFillDelete, AiOutlineEdit } from 'react-icons/ai';
 
-const task = ({ task }) => {
+const allTask = ({ allTask }) => {
 
-    // console.log(task);
+    // console.log(allTask);
 
-    const controlCheckTask = (id) => {
+    const controlCheckAllTask = (id) => {
 
         const myCheck = document.getElementById(id);
 
@@ -16,23 +16,38 @@ const task = ({ task }) => {
     }
 
 
+    const handleDelete = (id) => {
+        console.log(id);
+
+
+        fetch(`http://localhost:1010/delete/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log("deleted successfully");
+                console.log(data);
+            })
+            .catch(err => console.log(err));
+        // console.log(typeof(id), id)
+    }
+
+
 
     return (
-        // <tr>
-            <>
-                <th scope="row">
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id={task.id} onClick={() => controlCheckTask(task.id)} />
-                    </div>
-                </th>
-                <td className="task-title" id="task-title">{task.title}</td>
-                <td>{task.date}</td>
-                <td>{task.duration}</td>
-                <td>{task.type}</td>
-                <td><button className="btn btn-warning"><AiOutlineEdit className="" /></button> <button className="btn btn-danger"><AiFillDelete className="" /></button> </td>
-            </>
-        // </tr>
+        <tr>
+            <th scope="row">
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id={allTask.id} onClick={() => controlCheckAllTask(allTask.id)} />
+                </div>
+            </th>
+            <td className="allTask-title" id="allTask-title">{allTask.title}</td>
+            <td>{allTask.date}</td>
+            <td>{allTask.duration}</td>
+            <td>{allTask.type}</td>
+            <td><a href="/edit" className="btn btn-warning"><AiOutlineEdit className="" /></a> <button href="/delete" className="btn btn-danger" onClick={() => handleDelete(allTask.id)}><AiFillDelete className="" /></button> </td>
+        </tr>
     );
 };
 
-export default task;
+export default allTask;

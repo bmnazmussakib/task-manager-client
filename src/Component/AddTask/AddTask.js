@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Task from '../Task/Task';
 
 
 const AddTask = () => {
+
+    // Get Data from Database
+    const [getTask, setGetTask] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:1010/allTask')
+            .then((response) => response.json())
+            .then((data) => {
+                setGetTask(data)
+            });
+    }, [])
 
     // set the task info from input
     const [task, setTask] = useState(
@@ -27,10 +38,7 @@ const AddTask = () => {
         setTask({ ...task, [name]: value })
     }
 
-
     const handleAddTask = (e) => {
-
-        // console.log(task);
 
         fetch('http://localhost:1010/insert', {
             method: 'POST',
@@ -48,7 +56,7 @@ const AddTask = () => {
     return (
         <div>
             <Container>
-                <form action="/insert" method="post"className="input-group mb-3 w-75 mx-auto">
+                <form action="/insert" method="post" className="input-group mb-3 w-75 mx-auto">
                     <input type="text" className="form-control" placeholder="Add Task Here" name="task" onChange={handleInput} />
                     <input type="date" className="form-control" placeholder="Date" name="date" onChange={handleInput} />
                     <input type="number" className="form-control" placeholder="Duration" name="duration" onChange={handleInput} />
@@ -70,9 +78,9 @@ const AddTask = () => {
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <Task task={task} />
-                        </tr>
+                            {
+                            getTask.map(allTask => <Task allTask={allTask} key={ allTask.id }/>)
+                            }
                     </tbody>
 
                 </table>
